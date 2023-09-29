@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (same as before) ... -->
+</head>
+<body>
+    <header>
+        <!-- ... (same as before) ... -->
+    </header>
+
+    <div class="container">
+        <section>
+            <!-- ... (same as before) ... -->
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <p>
+                Feel free to get in touch with me:
+                <br>
+                Email: <a href="mailto:your.email@example.com">your.email@example.com</a>
+                <br>
+                LinkedIn: <a href="https://www.linkedin.com/in/yourname" target="_blank">linkedin.com/in/yourname</a>
+            </p>
+
+            <h3>Contact Form</h3>
+            <form id="contact-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Submit</button>
+            </form>
+            <p id="validation-message"></p>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript for form validation
+        const contactForm = document.getElementById('contact-form');
+        const emailInput = document.getElementById('email');
+        const validationMessage = document.getElementById('validation-message');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const emailValue = emailInput.value.trim();
+
+            // Basic email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailPattern.test(emailValue)) {
+                validationMessage.textContent = 'Please enter a valid email address.';
+                emailInput.classList.add('error');
+            } else {
+                validationMessage.textContent = '';
+                emailInput.classList.remove('error');
+                // You can add code here to send the form data to your server or perform other actions.
+            }
+        });
+    </script>
+</body>
+</html>
